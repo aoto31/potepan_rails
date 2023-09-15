@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>ScheduleApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", madia: "all", "data-turbo-track": "reload" %>
+  
   </head>
 
   <body>
+  <header>
+
+  <div class = "Navbar" >
+    <div class = "container-fluid">
+      <p class ="text-center Navbar_text">スケジュール管理アプリ</p>
+    </div>
+  </div>
+
+  
     <%= yield %>
   </body>
 </html>

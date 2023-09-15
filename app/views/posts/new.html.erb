@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<title>予定の新規追加</title>
+</head>
+
+<body>
+
+<%= form_with model: @post, url: posts_path, local: true do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+  <h3>予定の新規追加</h3>
+
+
+  <div class="FormContainer">
+    <div form class="forms" action="/posts" method="post">
+
+      <div class="col title">
+          <div class="required">
+            <label for="title">タイトル</label></div>
+            <input type="text" name="post[title]" id="title" size="50" maxlength="20">
+
+      </div>
+      <div class="col start-day">
+          <div class="required">
+              <label for="start-day">開始日</label></div>
+              <input type="date" name="post[start_date]" id="start_date">
+      </div>
+      <div class="col end-day">
+          <div class="required">
+            <label for="end-day">終了日</label></div>
+            <input type="date" name="post[end_date]" id="end_date">
+      </div>
+      <div class="col form-check">
+          <label for="checkbox">終日の場合はチェックする</label>
+          <input type="checkbox" name="post[checkbox]" id="checkbox">
+      </div>
+      <div class="col memo">
+          <label for="memo">スケジュールメモ</label>
+          <textarea id="memo" name="post[memo]" rows="10" cols="80" maxlength="500"></textarea>
+      </div>
+
+      <div class="list">
+        <ul>
+         <li><%= form.submit "登録完了する"%></li>
+         <li><%= link_to "予定一覧に戻る", root_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    
+  </body>
+<% end %>
