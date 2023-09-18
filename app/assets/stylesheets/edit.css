@@ -16,7 +16,7 @@ input:required {
   background: pink;
 }
 /* 記入必須のマーク */
-.required:after {
+.required::after {
   content: " *";
   color: red;
   vertical-align: middle;

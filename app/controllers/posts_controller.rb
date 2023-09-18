@@ -5,11 +5,24 @@ class PostsController < ApplicationController
   end
 
   def show
-    
   end
 
   def new
     @post = Post.new
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(params.require(:post).parmit(:title,:start_date,:end_date,:is_all_day,:memo))
+      flash[:notice] = "スケジュールIDが「#{@post.id}」の情報を更新しました"
+      redirect_to :posts_path
+    else
+      render "edit"
+    end
   end
 
   def create
@@ -25,6 +38,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:start_date,:end_date,:checkbox,:memo)
+    params.require(:post).permit(:title,:start_date,:end_date,:is_all_day,:memo)
   end
 end

@@ -16,7 +16,13 @@ table th {
 .container table {
   width: 100%;
 }
-.btn-container {
+
+* {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.btn-content {
   text-align: right;
 }
 

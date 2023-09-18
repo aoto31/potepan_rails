@@ -1,58 +1,55 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>予定一覧</title>
-    <%= stylesheet_link_tag "index" , media: "all" , "data-turbolinks-track" => "reload" %>
-  </head>
 
-  <body>
-    <h3>予定一覧です</h3>
-    <div class="btn-container">
+
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<table>
+
+<h3>予定一覧です</h3>
+
+  <div class="btn-container">
     <a href="/posts/new">
     <button class="btn">新規追加</button>
     </a>
-    </div>
+  </div>
 
-    <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>タイトル</th>
-            <th>開始日</th>
-            <th>終了日</th>
-            <th>終日</th>
-            <th>更新日時</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            </tr>
-        </thead>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>タイトル</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>終日</th>
+      <th>更新日時</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        <tbody>
-            
-      </table>
-    </div>
-    <% if @posts.empty? %>
-    <p>投稿がありません</p>
-    <% else %> 
+  <tbody>
+
     <% @posts.each do |post| %>
-      <div class="posts-index-item">
-      <%= post.content %> 
-      <%= link_to "詳細を見る" , post_path(post) %>
-    </div>
-    <% end %> 
+      <tr>
+        <td><%= post.id %></td>
+        <td><%= post.title %></td>
+        <td><%= post.start_date.to_s(:extra_short) %></td>
+        <td><%= post.end_date %></td>
+        <td>
+        <% if post.is_all_day == true %>
+        ⚪︎
+        <% else post.is_all_day == false %>
+
+        <% end %>
+        </td>
+        <td><%= post.updated_at.to_s(:datetime_jp)%></td>
+        <td><%= link_to "詳細" , post %></td>
+        <td><%= link_to "編集" , edit_post_path(post) %></td>
+        <td><%= link_to "削除" , post , method: :delete , data: {confirm: "本当に削除しますか？"} %></td>
+      </tr>
     <% end %>
 
-  </body>
-</html>
+  </tbody>
+</table>
+

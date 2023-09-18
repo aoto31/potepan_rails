@@ -1,67 +1,55 @@
-<!DOCTYPE html>
-<html lang="ja">
+<h3>スケジュール新規作成</h3>
 
-<head>
-<meta charset="utf-8">
-<title>予定の新規追加</title>
-</head>
+<%= render "shared/error", obj:@post %>
+  <%= form_with model: @post do |f| %>
+  <table>
+    <tr>
+      <th>
+      <div class="required">
+      <%= f.label :title ,"タイトル" %>
+      </div>
+      </th>
+      <td><%= f.text_field :title, class: "forms" %></td>
+    </tr>
 
-<body>
-
-<%= form_with model: @post, url: posts_path, local: true do |form| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-      <ul>
-        <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <tr>
+      <th>
+      <div class="required">
+      <%= f.label :start_date ,"開始日" %>
+      </div>
+      </th>
+      <td><%= f.date_field :start_date, class: "forms" %></td>
     </div>
-  <% end %>
+    </tr>
 
-
-
-
-  <h3>予定の新規追加</h3>
-
-
-  <div class="FormContainer">
-    <div form class="forms" action="/posts" method="post">
-
-      <div class="col title">
-          <div class="required">
-            <label for="title">タイトル</label></div>
-            <input type="text" name="post[title]" id="title" size="50" maxlength="20">
-
+    <tr>
+      <th>
+      <div class="required">
+      <%= f.label :end_date ,"終了日" %>
       </div>
-      <div class="col start-day">
-          <div class="required">
-              <label for="start-day">開始日</label></div>
-              <input type="date" name="post[start_date]" id="start_date">
-      </div>
-      <div class="col end-day">
-          <div class="required">
-            <label for="end-day">終了日</label></div>
-            <input type="date" name="post[end_date]" id="end_date">
-      </div>
-      <div class="col form-check">
-          <label for="checkbox">終日の場合はチェックする</label>
-          <input type="checkbox" name="post[checkbox]" id="checkbox">
-      </div>
-      <div class="col memo">
-          <label for="memo">スケジュールメモ</label>
-          <textarea id="memo" name="post[memo]" rows="10" cols="80" maxlength="500"></textarea>
-      </div>
-
-      <div class="list">
-        <ul>
-         <li><%= form.submit "登録完了する"%></li>
-         <li><%= link_to "予定一覧に戻る", root_path %></li>
-        </ul>
-      </div>
+      </th>
+      <td><%= f.date_field :end_date, class: "forms" %></td>
     </div>
-  </div>
-    
-  </body>
-<% end %>
+    </tr>
+
+    <tr>
+      <th><%= f.label :is_all_day ,"終日" %></th>
+      <td><%= f.check_box :is_all_day, {}, checked_value='true', unchecked_value='false' %>
+      <br>終日の場合はチェックを入れる
+      </td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :memo ,"スケジュールメモ" %></th>
+      <td><%= f.text_area :memo, class: "memo-cotent" %></td>
+    </tr>
+  </table>
+
+
+     <div class="list">
+       <ul>
+         <li><%= f.submit "登録完了する", class: "submit-button" %></li>
+         <li><%= link_to "予定一覧に戻る", :posts %></li>
+       </ul>
+     </div>
+   <% end %>
