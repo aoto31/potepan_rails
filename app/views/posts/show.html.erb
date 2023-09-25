@@ -7,11 +7,11 @@
     </tr>
     <tr>
       <th>開始日</th>
-      <td><%= @post.start_at.to_s(:extra_short) %></td>
+      <td><%= @post.start_date.to_s(:extra_short) %></td>
     </tr>
     <tr>
       <th>終了日</th>
-      <td><%= @post.end_at.to_s(:extra_short) %></td>
+      <td><%= @post.end_date.to_s(:extra_short) %></td>
     </tr>
     <tr>
       <th>終日</th>
@@ -29,10 +29,10 @@
   </table>
 
   <div class = "links">
-    <p>
-      <%= link_to "予定一覧に戻る", :posts, class: "links" %>
-      <br><%= link_to "編集", [:edit, @post], class: "links" %>
-      <br><%= link_to "削除", @post, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "links" %>
-    </p>
+    <ul>
+      <li><%= link_to "予定一覧に戻る", :posts, class: "links" %></li>
+      <li><%= link_to "編集", [:edit, @post], class: "links" %></li>
+      <li><%= link_to "削除", @post, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "links" %></li>
+    </ul>
 
   </div>

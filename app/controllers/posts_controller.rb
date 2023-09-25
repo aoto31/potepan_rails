@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -17,9 +18,9 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(params.require(:post).parmit(:title,:start_date,:end_date,:is_all_day,:memo))
+    if @post.update(params.require(:post).permit(:title,:start_date,:end_date,:is_all_day,:memo))
       flash[:notice] = "スケジュールIDが「#{@post.id}」の情報を更新しました"
-      redirect_to :posts_path
+      redirect_to posts_path
     else
       render "edit"
     end
@@ -33,6 +34,13 @@ class PostsController < ApplicationController
     else 
       render :new
     end
+  end
+
+  def destroy
+    @posts = Post.find(params[:id])
+    @posts.destroy
+    flash[:notice] = "投稿を削除しました"
+    redirect_to :posts
   end
 
   private

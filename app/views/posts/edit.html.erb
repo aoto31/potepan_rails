@@ -1,6 +1,7 @@
 <h3>予定を編集してください</h3>
 
-<%= form_with model: @post, url: posts_path, local: true do |form| %>
+<%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
+
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -44,7 +45,7 @@
   <div>
     <ul>
       <li><%= f.submit "編集を完了する", class: "submit-button" %></li>
-      <li><%= link_to "予定一覧に戻る", :posts_path %></li>
+      <li><%= link_to "予定一覧に戻る", :posts %></li>
     </ul>
   </div>
     
