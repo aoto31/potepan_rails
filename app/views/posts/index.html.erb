@@ -42,12 +42,12 @@
         <% else post.is_all_day == false %>
 
         <% end %>
-        
+
         </td>
         <td><%= post.updated_at.to_s(:datetime_jp)%></td>
         <td><%= link_to "詳細" , post %></td>
         <td><%= link_to "編集" , edit_post_path(post) %></td>
-        <td><%= link_to "削除" , post , method: :delete , data: {confirm: "本当に削除しますか？"} %></td>
+        <td><%= button_to "削除" , post_path(post.id) , method: :delete , data: {confirm: "本当に削除しますか？"} %></td>
       </tr>
     <% end %>
 
