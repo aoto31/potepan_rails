@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+.Navbar {
+  background-color: #1c1d3b;
+  height: 50px;
+  margin-bottom: 24px;
+
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+* {
+  box-sizing: border-box;
+}
+
+.Navbar_text {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  margin: 0 auto;
+  width: 200px;
+  text-align: center !important;
+}
+
+body {
+  background-color: #f6f6f6;
+}

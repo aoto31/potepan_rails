@@ -1,0 +1,36 @@
+/* 登録完了するボタンと予定一覧に戻るリンクの・を消してる */
+.list ul li {
+  list-style: none;
+}
+/* 各フォームを中央にしてる */
+.FormContainer {
+  float: left;
+  text-align: center;
+}
+/* 各フォームの上の間隔を開けてる */
+.col {
+  margin-top: 20px;
+}
+/* 必須記入事項の背景色を変えてる */
+input:required {
+  background: pink;
+}
+/* 記入必須のマーク */
+.required:after {
+  content: " *";
+  color: red;
+  vertical-align: middle;
+}
+
+.forms {
+  width: 100%;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+}
+
+ul li {
+  padding: 5px 25px;
+}

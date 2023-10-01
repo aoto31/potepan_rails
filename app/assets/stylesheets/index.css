@@ -1,0 +1,36 @@
+table th {
+  background-color: #ffffff;
+  padding: 10px 20px;
+}
+
+table th {
+  background-color: #fff;
+  padding: 10px 20px;
+}
+
+.notice {
+  background-color: #ccf;
+  padding: 5px;
+}
+
+.container table {
+  width: 100%;
+}
+
+* {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.btn-content {
+  text-align: right;
+}
+
+.btn {
+  background-color: blue;
+  color: #fff;
+  font-weight: 700;
+  width: 100px;
+  height: 45px;
+  border: none;
+}
